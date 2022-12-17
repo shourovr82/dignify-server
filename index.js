@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -10,10 +11,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// username = dignifyDB
-// pass: ONgtYkezWI5l6Zd8
 
-const uri = "mongodb+srv://dignifyDB:ONgtYkezWI5l6Zd8@cluster0.ikwqeh8.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ikwqeh8.mongodb.net/?retryWrites=true&w=majority`;
 
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
